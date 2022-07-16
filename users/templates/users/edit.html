@@ -1,0 +1,63 @@
+{% extends 'users/layout.html' %}
+	{% block content %}	
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					{% if user.is_authenticated %}
+						<div class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST">
+							{% csrf_token %}
+							<span class="login100-form-title">
+								Edit profile
+							</span>
+
+							<div class="wrap-input100 m-b-16">
+                                <div class="input100">{{ form.username }}</div>
+                                <span class="focus-input100"></span>
+                            </div>
+        
+                            <div class="wrap-input100 m-b-16">
+                                <div class="input100">{{ form.email }}</div>
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 m-b-16">
+                                <div class="input100">{{ form.bio }}</div>
+                                <span class="focus-input100"></span>
+                            </div>
+        
+                            <div class="wrap-input100 m-b-16">
+                                <div class="input100">{{ form.password1 }}</div>
+                                <span class="focus-input100"></span>
+                            </div>
+							
+        
+                            <div class="wrap-input100 m-b-16">
+                                <div class="input100">{{ form.password2 }}</div>
+                                <span class="focus-input100"></span>
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" type="submit">
+                                    Edit
+                                </button>
+                            </div>
+
+							<div class="flex-col-c p-t-170 p-b-40">
+								<a href="{% url 'users' %}" class="txt1 p-b-9">
+									Back
+								</a>
+							</div>
+						</form>
+					{% else %}
+						<div class="sign">
+							<a href="{% url 'signin' %}" class="txt3">
+								Sign in
+							</a>
+							<a href="{% url 'signup' %}" class="txt3">
+								Sign up now
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% endblock %}

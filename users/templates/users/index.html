@@ -1,0 +1,49 @@
+{% extends 'users/layout.html' %}
+	{% block content %}	
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					{% if user.is_authenticated %}
+						<div class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST">
+							{% csrf_token %}
+							<span class="login100-form-title">
+								My Account
+							</span>
+
+							<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+								<p class="input100-p" name="username">username: {{ user.username }}</p>
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+								<p class="input100-p" name="username">email: {{ user.email }}</p>
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+								<p class="input100-p" name="username">bio: {{ user.bio }}</p>
+								<span class="focus-input100"></span>
+							</div>
+							<div class="text-right p-t-13 p-b-23">
+								<a class="txt2" href="{% url 'edit_profile' %}">Edit Profile</a>
+							</div>
+
+							<div class="flex-col-c p-t-170 p-b-40">
+								<a href="{% url 'logout_user' %}" class="txt1 p-b-9">
+									Logout
+								</a>
+							</div>
+						</form>
+					{% else %}
+						<div class="sign">
+							<a href="{% url 'signin' %}" class="txt3">
+								Sign in
+							</a>
+							<a href="{% url 'signup' %}" class="txt3">
+								Sign up now
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% endblock %}
